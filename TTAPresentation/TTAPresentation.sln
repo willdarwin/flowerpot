@@ -1,0 +1,120 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSites", "WebSites", "{862F8B63-657C-451E-9782-1999D524618B}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TTAPresentation", "WebSites\TTAPresentation", "{D5FD73C7-3615-421B-BD29-68871C083D80}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{7321717B-224F-478F-8287-02A8EFDCF9BA}|Shell.dll;{D741907C-6DBF-424A-8473-C2FF01C712C2}|TTAOrders.dll;{05A5186E-054A-487C-9090-27A556268E46}|TTA.ServiceProxy.dll;{87417D77-3B63-4510-B6BF-225A6C6EEDAD}|TTACustomer.dll;{FFB79E88-2BD4-4627-A00C-154213D99CDE}|TTAProduct.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/TTAPresentation"
+		Debug.AspNetCompiler.PhysicalPath = "WebSites\TTAPresentation\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\TTAPresentation\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/TTAPresentation"
+		Release.AspNetCompiler.PhysicalPath = "WebSites\TTAPresentation\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\TTAPresentation\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "15137"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{549646B9-01D2-4569-BE1A-00FACBD2AC57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shell", "Modules\Shell\Shell.csproj", "{7321717B-224F-478F-8287-02A8EFDCF9BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTA.ServiceProxy", "TTA.ServiceProxy\TTA.ServiceProxy.csproj", "{05A5186E-054A-487C-9090-27A556268E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTAOrders", "TTAOrders\TTAOrders.csproj", "{D741907C-6DBF-424A-8473-C2FF01C712C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTAProduct", "TTAProduct\TTAProduct.csproj", "{FFB79E88-2BD4-4627-A00C-154213D99CDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTACustomer", "TTACustomer\TTACustomer.csproj", "{87417D77-3B63-4510-B6BF-225A6C6EEDAD}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs20
+		SccLocalPath0 = .
+		SccWebProject1 = true
+		SccProjectUniqueName1 = WebSites\\TTAPresentation
+		SccProjectTopLevelParentUniqueName1 = TTAPresentation.sln
+		SccProjectName1 = WebSites/TTAPresentation
+		SccLocalPath1 = WebSites\\TTAPresentation
+		SccProjectEnlistmentChoice1 = 2
+		SccProjectUniqueName2 = Modules\\Shell\\Shell.csproj
+		SccProjectTopLevelParentUniqueName2 = TTAPresentation.sln
+		SccProjectName2 = Modules/Shell
+		SccLocalPath2 = Modules\\Shell
+		SccProjectUniqueName3 = TTA.ServiceProxy\\TTA.ServiceProxy.csproj
+		SccProjectName3 = TTA.ServiceProxy
+		SccLocalPath3 = TTA.ServiceProxy
+		SccProjectUniqueName4 = TTAOrders\\TTAOrders.csproj
+		SccProjectTopLevelParentUniqueName4 = TTAPresentation.sln
+		SccProjectName4 = TTAOrders
+		SccLocalPath4 = TTAOrders
+		SccProjectUniqueName5 = TTAProduct\\TTAProduct.csproj
+		SccProjectTopLevelParentUniqueName5 = TTAPresentation.sln
+		SccProjectName5 = TTAProduct
+		SccLocalPath5 = TTAProduct
+		SccProjectUniqueName6 = TTACustomer\\TTACustomer.csproj
+		SccProjectTopLevelParentUniqueName6 = TTAPresentation.sln
+		SccProjectName6 = TTACustomer
+		SccLocalPath6 = TTACustomer
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5FD73C7-3615-421B-BD29-68871C083D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FD73C7-3615-421B-BD29-68871C083D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FD73C7-3615-421B-BD29-68871C083D80}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FD73C7-3615-421B-BD29-68871C083D80}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7321717B-224F-478F-8287-02A8EFDCF9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7321717B-224F-478F-8287-02A8EFDCF9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7321717B-224F-478F-8287-02A8EFDCF9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7321717B-224F-478F-8287-02A8EFDCF9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05A5186E-054A-487C-9090-27A556268E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05A5186E-054A-487C-9090-27A556268E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05A5186E-054A-487C-9090-27A556268E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05A5186E-054A-487C-9090-27A556268E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D741907C-6DBF-424A-8473-C2FF01C712C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D741907C-6DBF-424A-8473-C2FF01C712C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D741907C-6DBF-424A-8473-C2FF01C712C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D741907C-6DBF-424A-8473-C2FF01C712C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB79E88-2BD4-4627-A00C-154213D99CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB79E88-2BD4-4627-A00C-154213D99CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB79E88-2BD4-4627-A00C-154213D99CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB79E88-2BD4-4627-A00C-154213D99CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87417D77-3B63-4510-B6BF-225A6C6EEDAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87417D77-3B63-4510-B6BF-225A6C6EEDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87417D77-3B63-4510-B6BF-225A6C6EEDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87417D77-3B63-4510-B6BF-225A6C6EEDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D5FD73C7-3615-421B-BD29-68871C083D80} = {862F8B63-657C-451E-9782-1999D524618B}
+		{7321717B-224F-478F-8287-02A8EFDCF9BA} = {549646B9-01D2-4569-BE1A-00FACBD2AC57}
+		{D741907C-6DBF-424A-8473-C2FF01C712C2} = {549646B9-01D2-4569-BE1A-00FACBD2AC57}
+		{FFB79E88-2BD4-4627-A00C-154213D99CDE} = {549646B9-01D2-4569-BE1A-00FACBD2AC57}
+		{87417D77-3B63-4510-B6BF-225A6C6EEDAD} = {549646B9-01D2-4569-BE1A-00FACBD2AC57}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		RootNamespace = TTAPresentation
+		IsWCSFSolution = True
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TTAEntityContainerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TTAEntityContainerModelStoreContainer">
+          <EntitySet Name="Address" EntityType="TTAEntityContainerModel.Store.Address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="TTAEntityContainerModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="TTAEntityContainerModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="TTAEntityContainerModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetails" EntityType="TTAEntityContainerModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderStatus" EntityType="TTAEntityContainerModel.Store.OrderStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="TTAEntityContainerModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="TTAEntityContainerModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderSearchResult" EntityType="TTAEntityContainerModel.Store.OrderSearchResult" store:Type="Views" store:Schema="dbo" store:Name="OrderSearchResult">
+            <DefiningQuery>SELECT 
+      [OrderSearchResult].[OrderId] AS [OrderId], 
+      [OrderSearchResult].[CreatedDate] AS [CreatedDate], 
+      [OrderSearchResult].[CustomerName] AS [CustomerName], 
+      [OrderSearchResult].[ProductName] AS [ProductName], 
+      [OrderSearchResult].[TotalPrice] AS [TotalPrice]
+      FROM [dbo].[OrderSearchResult] AS [OrderSearchResult]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Customer_Address" Association="TTAEntityContainerModel.Store.FK_Customer_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="TTAEntityContainerModel.Store.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="TTAEntityContainerModel.Store.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="TTAEntityContainerModel.Store.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Product" Association="TTAEntityContainerModel.Store.FK_OrderDetails_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="TTAEntityContainerModel.Store.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomerGender" Type="bit" Nullable="false" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductPrice" Type="decimal" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'TrainingProject1_Dev_1.dbo.OrderSearchResult' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OrderSearchResult">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="TotalPrice" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TotalPrice" Type="decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_Address">
+          <End Role="Address" Type="TTAEntityContainerModel.Store.Address" Multiplicity="1" />
+          <End Role="Customer" Type="TTAEntityContainerModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="TTAEntityContainerModel.Store.Customer" Multiplicity="1" />
+          <End Role="Order" Type="TTAEntityContainerModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Role="OrderStatus" Type="TTAEntityContainerModel.Store.OrderStatus" Multiplicity="1" />
+          <End Role="Order" Type="TTAEntityContainerModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Order" Type="TTAEntityContainerModel.Store.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="TTAEntityContainerModel.Store.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Product">
+          <End Role="Product" Type="TTAEntityContainerModel.Store.Product" Multiplicity="1" />
+          <End Role="OrderDetails" Type="TTAEntityContainerModel.Store.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="TTAEntityContainerModel.Store.Category" Multiplicity="1" />
+          <End Role="Product" Type="TTAEntityContainerModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SearchResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerName" Type="varchar" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="SortExpression" Type="varchar" Mode="In" />
+          <Parameter Name="SortDirection" Type="varchar" Mode="In" />
+          <Parameter Name="RowStart" Type="int" Mode="In" />
+          <Parameter Name="RowEnd" Type="int" Mode="In" />
+          <Parameter Name="RowNum" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TTAEntityContainerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TTAEntityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="TTAEntityContainerModel.Address" />
+          <EntitySet Name="Categories" EntityType="TTAEntityContainerModel.Category" />
+          <EntitySet Name="Customers" EntityType="TTAEntityContainerModel.Customer" />
+          <EntitySet Name="Orders" EntityType="TTAEntityContainerModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="TTAEntityContainerModel.OrderDetails" />
+          <EntitySet Name="OrderStatus" EntityType="TTAEntityContainerModel.OrderStatus" />
+          <EntitySet Name="Products" EntityType="TTAEntityContainerModel.Product" />
+          <EntitySet Name="sysdiagrams" EntityType="TTAEntityContainerModel.sysdiagrams" />
+          <AssociationSet Name="FK_Customer_Address" Association="TTAEntityContainerModel.FK_Customer_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="TTAEntityContainerModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="TTAEntityContainerModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="TTAEntityContainerModel.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="TTAEntityContainerModel.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Product" Association="TTAEntityContainerModel.FK_OrderDetails_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="OrderSearchResults" EntityType="TTAEntityContainerModel.OrderSearchResult" />
+          <FunctionImport Name="SearchResults" EntitySet="OrderSearchResults" ReturnType="Collection(TTAEntityContainerModel.OrderSearchResult)">
+            <Parameter Name="CustomerName" Mode="In" Type="String" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="SortExpression" Mode="In" Type="String" />
+            <Parameter Name="SortDirection" Mode="In" Type="String" />
+            <Parameter Name="RowStart" Mode="In" Type="Int32" />
+            <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+            <Parameter Name="RowNum" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="TTAEntityContainerModel.FK_Customer_Address" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="TTAEntityContainerModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerGender" Type="Boolean" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="TTAEntityContainerModel.FK_Customer_Address" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="Order" Relationship="TTAEntityContainerModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="TTAEntityContainerModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderStatus" Relationship="TTAEntityContainerModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="OrderDetails" Relationship="TTAEntityContainerModel.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Order" Relationship="TTAEntityContainerModel.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="TTAEntityContainerModel.FK_OrderDetails_Product" FromRole="OrderDetails" ToRole="Product" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Order" Relationship="TTAEntityContainerModel.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="TTAEntityContainerModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="OrderDetails" Relationship="TTAEntityContainerModel.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Customer_Address">
+          <End Role="Address" Type="TTAEntityContainerModel.Address" Multiplicity="1" />
+          <End Role="Customer" Type="TTAEntityContainerModel.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="TTAEntityContainerModel.Category" Multiplicity="1" />
+          <End Role="Product" Type="TTAEntityContainerModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="TTAEntityContainerModel.Customer" Multiplicity="1" />
+          <End Role="Order" Type="TTAEntityContainerModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Role="OrderStatus" Type="TTAEntityContainerModel.OrderStatus" Multiplicity="1" />
+          <End Role="Order" Type="TTAEntityContainerModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Order" Type="TTAEntityContainerModel.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="TTAEntityContainerModel.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Product">
+          <End Role="Product" Type="TTAEntityContainerModel.Product" Multiplicity="1" />
+          <End Role="OrderDetails" Type="TTAEntityContainerModel.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderSearchResult">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="TotalPrice" />
+          </Key>
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TTAEntityContainerModelStoreContainer" CdmEntityContainer="TTAEntityContainer">
+          <EntitySetMapping Name="Addresses"><EntityTypeMapping TypeName="TTAEntityContainerModel.Address"><MappingFragment StoreEntitySet="Address">
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="Province" ColumnName="Province" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="Address1" ColumnName="Address" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="TTAEntityContainerModel.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+            <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="TTAEntityContainerModel.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+            <ScalarProperty Name="CustomerGender" ColumnName="CustomerGender" />
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="TTAEntityContainerModel.Order"><MappingFragment StoreEntitySet="Order">
+            <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails"><EntityTypeMapping TypeName="TTAEntityContainerModel.OrderDetails"><MappingFragment StoreEntitySet="OrderDetails">
+            <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+            <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+            <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+            <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+            <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus"><EntityTypeMapping TypeName="TTAEntityContainerModel.OrderStatus"><MappingFragment StoreEntitySet="OrderStatus">
+            <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+            <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Products"><EntityTypeMapping TypeName="TTAEntityContainerModel.Product"><MappingFragment StoreEntitySet="Product">
+            <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+            <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+            <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+            <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="TTAEntityContainerModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OrderSearchResults">
+            <EntityTypeMapping TypeName="TTAEntityContainerModel.OrderSearchResult">
+              <MappingFragment StoreEntitySet="OrderSearchResult">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SearchResults" FunctionName="TTAEntityContainerModel.Store.SearchResults" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TTA_DataEntity">
+        <EntityTypeShape EntityType="TTAEntityContainerModel.Address" Width="1.5" PointX="0.75" PointY="1" Height="1.9210009765625002" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.Category" Width="1.5" PointX="5.125" PointY="4.375" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.Customer" Width="1.5" PointX="3" PointY="1" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.Order" Width="1.5" PointX="5.25" PointY="0.875" Height="2.0853483072916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.OrderDetails" Width="1.5" PointX="7.5" PointY="0.875" Height="2.0853483072916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.OrderStatus" Width="1.5" PointX="3" PointY="3.5" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.Product" Width="1.5" PointX="7.125" PointY="3.625" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTAEntityContainerModel.sysdiagrams" Width="1.5" PointX="10.25" PointY="1.875" Height="1.7566536458333317" IsExpanded="true" />
+        <AssociationConnector Association="TTAEntityContainerModel.FK_Customer_Address" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.9605004882812498" />
+          <ConnectorPoint PointX="3" PointY="1.9605004882812498" />
+        </AssociationConnector>
+        <AssociationConnector Association="TTAEntityContainerModel.FK_Product_Category" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.625" PointY="4.96050048828125" />
+          <ConnectorPoint PointX="7.125" PointY="4.96050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TTAEntityContainerModel.FK_Order_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.9605004882812498" />
+          <ConnectorPoint PointX="5.25" PointY="1.9605004882812498" />
+        </AssociationConnector>
+        <AssociationConnector Association="TTAEntityContainerModel.FK_Order_OrderStatus" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.90625" />
+          <ConnectorPoint PointX="6.71875" PointY="3.90625" />
+          <ConnectorPoint PointX="6.71875" PointY="2.9603483072916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="TTAEntityContainerModel.FK_OrderDetails_Order" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="1.9176741536458328" />
+          <ConnectorPoint PointX="7.5" PointY="1.9176741536458328" />
+        </AssociationConnector>
+        <AssociationConnector Association="TTAEntityContainerModel.FK_OrderDetails_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.0625" PointY="3.625" />
+          <ConnectorPoint PointX="8.0625" PointY="2.9603483072916656" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TTAEntityContainerModel.OrderSearchResult" Width="1.5" PointX="10.125" PointY="4.25" Height="1.7566536458333317" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DefaultMaster.master.cs"
+    Inherits="TTAPresentation.Shell.MasterPages.DefaultMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head" runat="server">
+    <title>TTAPresentation</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/tta.css" />
+    <script type="text/javascript" src="../Js/jquery-1.4.1.js"></script>
+    <asp:ContentPlaceHolder ID="TTAhead" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function showErrorMessage(msg) {
+            $("#ErrorPanel").append(msg).show('slow');
+        }
+        function turnoff() {
+            $("#ErrorPanel").hide('slow');
+        }
+    </script>
+</head>
+<body>
+    <form id="mainForm" runat="server">
+    <asp:ScriptManager ID="DefaultMasterScriptManager" runat="server">
+    </asp:ScriptManager>
+    &nbsp;
+    <div id="mainwrapper">
+        <div id="header">
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        Traning Project-Team A
+                        <div id="header-bottom">
+                            Members: Eric,Lily,Robin,Sunny,Will
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <table id="content" width="100%">
+            <tr>
+                <td id="content-left" valign="top">
+                    <asp:TreeView ID="NavigationTreeView" runat="server" ExpandDepth="2" DataSourceID="ApplicationSiteMap" />
+                </td>
+                <td id="content-right">
+                    <div id="breadcrumb">
+                        <asp:SiteMapPath ID="DefaultBreadCrumb" SiteMapProvider="DefaultSiteMapProvider"
+                            runat="server" />
+                    </div>
+                    <div id="ErrorPanel" style="display: none" ><a href="#" onclick="turnoff()" style="float: right">Close</a>
+                    </div>
+                    <asp:ContentPlaceHolder ID="DefaultContent" runat="server" />
+                </td>
+            </tr>
+        </table>
+        <div id="footer">
+            <table style="width: 100%">
+                <%--                    <tr>
+                        <td>
+                            <a href="http://www.codeplex.com/websf">Web Client Software Factory </a> - a patterns &amp; practices initiative</td>
+                    </tr>--%>
+            </table>
+        </div>
+    </div>
+    <asp:SiteMapDataSource ID="ApplicationSiteMap" runat="server" SiteMapProvider="DefaultSiteMapProvider"
+        ShowStartingNode="False" />
+    &nbsp;
+    </form>
+</body>
+</html>

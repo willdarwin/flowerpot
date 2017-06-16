@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{663A9D69-6839-40DC-B17C-48AD168A4C7A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TTA.Model</RootNamespace>
+    <AssemblyName>TTA.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressBE.cs" />
+    <Compile Include="CategoryBE.cs" />
+    <Compile Include="CustomerBE.cs" />
+    <Compile Include="OrderBE.cs" />
+    <Compile Include="OrderDetailsBE.cs" />
+    <Compile Include="OrderSearchParameterBE.cs" />
+    <Compile Include="OrderStatusBE.cs" />
+    <Compile Include="ProductBE.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OrderSearchResultBE.cs" />
+    <Compile Include="Request\CloseOrderDetailsRequest.cs" />
+    <Compile Include="Request\CloseOrderRequest.cs" />
+    <Compile Include="Request\CountOrderDetailsByProductIdRequest.cs" />
+    <Compile Include="Request\DeleteCustomerRequest.cs" />
+    <Compile Include="Request\DeleteOrderDetailsRequest.cs" />
+    <Compile Include="Request\DeleteOrderRequest.cs" />
+    <Compile Include="Request\DeleteProductRequst.cs" />
+    <Compile Include="Request\GetAllAddressesRequest.cs" />
+    <Compile Include="Request\GetAllCustomersRequest.cs" />
+    <Compile Include="Request\GetAllOrderDetailsRequest.cs" />
+    <Compile Include="Request\GetCustomerByIdRequest.cs" />
+    <Compile Include="Request\GetCustomerRequest.cs" />
+    <Compile Include="Request\GetOrderDetailsByOrderIdRequest.cs" />
+    <Compile Include="Request\GetOrdersbyConditionRequst.cs" />
+    <Compile Include="Request\GetProductByIdRequest.cs" />
+    <Compile Include="Request\GetProductRequest.cs" />
+    <Compile Include="Request\InsertCustomerRequest.cs" />
+    <Compile Include="Request\InsertOrderDetailsRequest.cs" />
+    <Compile Include="Request\InsertOrderRequest.cs" />
+    <Compile Include="Request\InsertProductRequest.cs" />
+    <Compile Include="Request\OpenOrderRequest.cs" />
+    <Compile Include="Request\RequestBase.cs" />
+    <Compile Include="Request\SearchByConditionsRequest.cs" />
+    <Compile Include="Request\SelectAllCategoryRequest.cs" />
+    <Compile Include="Request\SelectAllProductRequest.cs" />
+    <Compile Include="Request\UpdateCustomerRequest.cs" />
+    <Compile Include="Request\UpdateProductRequest.cs" />
+    <Compile Include="Request\UpdateOrderDetailsRequest.cs" />
+    <Compile Include="Response\CloseOrderDetailsResponse.cs" />
+    <Compile Include="Response\CloseOrderResponse.cs" />
+    <Compile Include="Response\CountOrderDetailsByProductIdResponse.cs" />
+    <Compile Include="Response\DeleteOrderDetailsResponse.cs" />
+    <Compile Include="Response\DeleteOrderResponse.cs" />
+    <Compile Include="Response\DeleteProductResponse.cs" />
+    <Compile Include="Response\GetAllOrderDetailsResponse.cs" />
+    <Compile Include="Response\GetCustomerResponse.cs" />
+    <Compile Include="Response\GetOrderDetailsByOrderIdResponse.cs" />
+    <Compile Include="Response\GetOrdersbyConditionResponse.cs" />
+    <Compile Include="Response\GetProductByIdResponse.cs" />
+    <Compile Include="Response\GetProductResponse.cs" />
+    <Compile Include="Response\InsertOrderDetailsResponse.cs" />
+    <Compile Include="Response\InsertOrderResponse.cs" />
+    <Compile Include="Response\InsertProductResponse.cs" />
+    <Compile Include="Response\DeleteCustomerResponse.cs" />
+    <Compile Include="Response\GetAllAddressesResponse.cs" />
+    <Compile Include="Response\GetAllCustomersResponse.cs" />
+    <Compile Include="Response\GetCustomerByIdResponse.cs" />
+    <Compile Include="Response\InsertCustomerResponse.cs" />
+    <Compile Include="Response\OpenOrderResponse.cs" />
+    <Compile Include="Response\ResponseBase.cs" />
+    <Compile Include="Response\SearchByConditionsResponse.cs" />
+    <Compile Include="Response\SelectAllCategoryResponse.cs" />
+    <Compile Include="Response\SelectAllProductResponse.cs" />
+    <Compile Include="Response\UpdateOrderDetailsResponse.cs" />
+    <Compile Include="Response\UpdateProductResponse.cs" />
+    <Compile Include="Response\UpdateCustomerResponse.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
